@@ -11,11 +11,11 @@ if [[ "$(git status --porcelain)" ]] ; then
   exit 2
 fi
 
-if [[ -z "ACTIVITY_BR" ]] ; then
-  ACTIVITY_BR="main" # 'cause github doesnt like master
+if [[ -z "BRANCH" ]] ; then
+  BRANCH="main" # 'cause github doesnt like master
 fi
 
-git checkout --orphan $ACTIVITY_BR >/dev/null 2>&1 || git checkout $ACTIVITY_BR > /dev/null 2>&1
+git checkout --orphan $BRANCH >/dev/null 2>&1 || git checkout $BRANCH > /dev/null 2>&1
 
 # Create temp commits direcotry
 if [[ ! -d .commits ]] ; then
@@ -72,7 +72,7 @@ function yes_or_no {
 
 echo
 yes_or_no "wanna push this big lie?" && \
-          git push --force --set-upstream origin $ACTIVITY_BR || \
+          git push --force --set-upstream origin $BRANCH || \
           echo Done 🙌
 
 echo "Generating done. Enjoy your useless green dots on github 🤡"
