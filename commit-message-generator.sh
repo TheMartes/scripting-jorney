@@ -11,7 +11,7 @@ if [[ "$(git status --porcelain)" ]] ; then
   exit 2
 fi
 
-if [[ -z "BRANCH" ]] ; then
+if [[ -z "$BRANCH" ]] ; then
   BRANCH="main" # 'cause github doesnt like master
 fi
 
@@ -28,7 +28,7 @@ if [[ ! -f  .commits/changes ]] ; then
 fi
 
 if [[ -z "$MAX_PAST_DAYS" ]] ; then
-  MAX_PAST_DAYS=365
+  MAX_PAST_DAYS=180
 fi
 
 # Create commits for the past 365 days
